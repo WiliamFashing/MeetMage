@@ -96,12 +96,12 @@ document.getElementById("createBtn").onclick = async () => {
     });
   });
 
-  peer.on("open", () => alert("Your call code is " + code));
+  peer.on("open", () => alert("Your Call Code is " + code));
 };
 
 document.getElementById("joinBtn").onclick = async () => {
   const code = document.getElementById("joinCode").value.trim().toUpperCase();
-  if (!code) return alert("Enter a call code!");
+  if (!code) return alert("Enter a valid call code.");
 
   showMeetingUI(code);
   await startCamera();
