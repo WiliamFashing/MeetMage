@@ -53,9 +53,9 @@
 <body>
 <h1>MeetMage</h1>
 <p>Make a call or join one with a code.</p>
-<button id="createBtn">Create Meeting</button><br>
+<button id="createBtn">Make a Call</button><br>
 <input id="joinCode" placeholder="Enter code">
-<button id="joinBtn">Join Meeting</button>
+<button id="joinBtn">Join Call</button>
 
 <div id="meeting" style="display:none;">
   <h2 id="roomTitle"></h2>
@@ -80,7 +80,7 @@ function showMeetingUI(code) {
   document.getElementById("joinCode").style.display = "none";
   document.getElementById("joinBtn").style.display = "none";
   document.getElementById("meeting").style.display = "block";
-  document.getElementById("roomTitle").innerText = "Meeting Code: " + code;
+  document.getElementById("roomTitle").innerText = "Call Code: " + code;
 }
 
 document.getElementById("createBtn").onclick = async () => {
@@ -96,12 +96,12 @@ document.getElementById("createBtn").onclick = async () => {
     });
   });
 
-  peer.on("open", () => alert("Your meeting code: " + code));
+  peer.on("open", () => alert("Your call code is " + code));
 };
 
 document.getElementById("joinBtn").onclick = async () => {
   const code = document.getElementById("joinCode").value.trim().toUpperCase();
-  if (!code) return alert("Enter a meeting code!");
+  if (!code) return alert("Enter a call code!");
 
   showMeetingUI(code);
   await startCamera();
